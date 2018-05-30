@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>个人空间-NEUNOTE</title>
+    <link rel="stylesheet" href="CSS/messageeditpage.css">
+    <link rel="stylesheet" href="CSS/font.css">
+    <script type="application/javascript" src="JS/jquery.js"></script>
+    <script type="text/javascript" src="JS/cookietool.js"></script>
+    <script>
+        function pageVerify(){
+            var c_code = get_cookie("c_code");
+            if(c_code === null){
+                location.href = "login.jsp";
+            }
+            jQuery.ajax({
+                type: 'POST',
+                dataType: 'text',
+                url: "CheckCookies",
+                data:{"c_code":c_code},
+                async:false,
+                success:function(data){
+                    if((data+"").trim() !== "Verify successed."){
+                        location.href = "login.jsp";
+                    }
+                }.bind(this)
+            });
+        }
+        pageVerify()
+    </script>
+</head>
+<body onload="bodyOnload()">
+<div id="main-top-panel">
+    <div class="main-top-title" onclick="location.href='index.html'">$$NEU \infty NOTE$$</div>
+</div>
+<div id="title-picture-panel"></div>
+<div id="main-title">$$NEU \infty NOTE$$</div>
+<div id="main-content-panel">
+    <div style="position:relative;border: 5px solid black;min-height: 400px;padding: 30px">
+        <div class="message-item-panel">
+            <span>昵称</span>
+            <input type="text" id="nickname"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>头像（外部链接）</span>
+            <input type="text" id="headphoto"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>学号</span>
+            <input type="text" id="studentID" disabled="disabled"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>密码</span>
+            <input type="password" id="password"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>新密码</span>
+            <input type="password" id="newpassword"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>重复新密码</span>
+            <input type="password" id="newpasswordre"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>姓名</span>
+            <input type="text" id="realname" disabled="disabled"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>所属</span>
+            <input type="text" id="from" disabled="disabled"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>成绩</span>
+            <input type="text" id="gpa" disabled="disabled"/><br/>
+        </div>
+        <div class="message-item-panel">
+            <span>个人简介</span>
+            <textarea id="introduction"></textarea>
+        </div>
+        <button onclick="saveUserMessage()" id="save-button">保存</button>
+    </div>
+</div>
+<script type="application/javascript" src="JS/messageeditpage.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script>
+    function bodyOnload(){
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] ],
+                displayMath: [ ["$$","$$"] ],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a','protect'],
+                ignoreClass:"text-flag"
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"],
+                showMathMenu: false
+            }
+        });
+        loadUserMessage();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+body{
+    background: lightgray;
+    margin: 0;
+}
+button{
+    cursor: pointer;
+}
+#page-panel{
+    margin: 55px auto 90px auto;
+    text-align: center;
+}
+.edit-page{
+    margin: 2px;
+}
+#main-top-panel{
+    width: 100%;
+    height: 40px;
+    background: black;
+    position: fixed;
+    top: 0;
+}
+.top-panel-button{
+    float: left;
+    height: 80%;
+    width: 70px;
+    margin: 4px 0 auto 10px;
+    padding: 0;
+    border: solid 1px white;
+    color: white;
+    background: black;
+    cursor: pointer;
+}
+.top-panel-button:hover{
+    background: white;
+    color: black;
+}
+.main-title{
+    float: right;
+    color: white;
+    margin-right: 20px;
+    margin-top: -3.5px;
+    cursor: pointer;
+}
+.tree-node{
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
+.tree-node:hover{
+    background: white;
+    color: black;
+    padding-left: 10px;
+}
+#top-panel-note-message{
+    text-align: center;
+    color: white;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 7px;
+    right: 0;
+    bottom: 0;
+    font-family: 方正楷体简体;
+    display: none;
+    z-index: -10;
+}
+#showing-note-title{
+    font-size: 23px;
+    font-family: 方正书宋简体;
+    font-weight: bold;
+}
+#top-panel-note-message input{
+    width: 10px;
+    border: 1px solid white;
+    color: white;
+    background: black;
+}
+#top-panel-note-message button{
+    border: 1px solid white;
+    color: white;
+    background: black;
+    cursor: pointer;
+}
+#author-message-panel{
+    width: 100%;
+    height: 70px;
+    background: rgb(50,50,50);
+    position: fixed;
+    bottom: 0;
+    border: 2px solid rgb(20,20,20);
+    text-align: center;
+}
+#author-message-panel div{
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+    font-family: 方正书宋简体;
+    color: white;
+    font-size: 20px;
+}
+#author-message-head{
+    background: url("../PIC/headdefault.png");
+    height: 100px;
+    width: 100px;
+    border-radius: 150px;
+    border: 5px solid rgb(50,50,50);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: -30px;
+}
+#author-message-nickname{
+    position: absolute;
+    left: 180px;
+    font-size: 40px;
+    font-family: 方正书宋简体;
+    color: white;
+    cursor: pointer;
+}
+#author-message-nickname-title{
+    position: absolute;
+    left: 120px;
+    top: 17px;
+}
+#author-message-share-time-title{
+    position: absolute;
+    left: 120px;
+    top: 42px;
+}
+#author-message-share-time{
+    position: absolute;
+    left: 200px;
+    top: 42px;
+}
+#author-message-last-edit-title{
+    position: absolute;
+    left: 420px;
+    top: 42px;
+}
+#author-message-last-edit-time{
+    position: absolute;
+    left: 540px;
+    top: 42px;
+}

@@ -1,0 +1,137 @@
+body{
+    margin: 0;
+    overflow-x: hidden;
+}
+button{
+    cursor: pointer;
+}
+#main-top-panel{
+    width: 100%;
+    height: 40px;
+    background: black;
+    top: 0;
+}
+.main-top-title{
+    float: right;
+    color: white;
+    margin-right: 20px;
+    margin-top: -3.5px;
+    cursor: pointer;
+}
+.main-top-button:hover{
+    background: white;
+    color: black;
+}
+#title-picture-panel{
+    background-size: cover;
+    width: 104%;
+    margin-left: -2%;
+    margin-top: -4px;
+    height: 302px;
+    animation: title-picture-panel-anime 120s ease-in-out infinite alternate;
+    z-index: -10;
+}
+#main-title{
+    font-size: 80px;
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    z-index: -10;
+    animation: main-title-anime 120s linear infinite alternate;
+}
+#main-content-panel{
+    width: 1100px;
+    background: white;
+    margin: -120px auto 80px;
+    padding: 4px;
+}
+.message-item-panel{
+    padding: 0;
+}
+.message-item-panel span{
+    display: inline-block;
+    margin-left: 100px;
+    font-size: 17px;
+    transform: scale(2.5,1);
+    font-family: 方正书宋简体;
+}
+.message-item-panel input{
+    position: absolute;
+    height: 15px;
+    width: 500px;
+    border: 1px solid black;
+    left: 400px;
+    font-size: 13px;
+}
+.message-item-panel textarea{
+    position: absolute;
+    height: 100px;
+    width: 500px;
+    border: 1px solid black;
+    left: 400px;
+    font-size: 15px;
+}
+#save-button{
+    position: absolute;
+    right: 170px;
+    bottom: 50px;
+    background: black;
+    font-size: 20px;
+    font-family: 方正书宋简体;
+    color: white;
+    border: none;
+}
+@keyframes main-title-anime{
+    0%  {text-shadow: 0px 0px 0px black}
+    12% {text-shadow: 0px 0px 0px black}
+    12.1% {text-shadow: 10px 10px 15px black}
+    12.2% {text-shadow: 5px 20px 30px black}
+    12.3% {text-shadow: -5px 20px 30px black}
+    12.4% {text-shadow: -10px 10px 15px black}
+    12.5% {text-shadow: 0px 0px 0px black}
+    25% {text-shadow: 0px 0px 0px black}
+    37% {text-shadow: 0px 0px 0px black}
+    37.1% {text-shadow: 10px 10px 15px black}
+    37.2% {text-shadow: 5px 20px 30px black}
+    37.3% {text-shadow: -5px 20px 30px black}
+    37.4% {text-shadow: -10px 10px 15px black}
+    37.5% {text-shadow: 0px 0px 0px black}
+    50% {text-shadow: 0px 0px 0px black}
+    62% {text-shadow: 0px 0px 0px black}
+    62.1% {text-shadow: 10px 10px 15px black}
+    62.2% {text-shadow: 5px 20px 30px black}
+    62.3% {text-shadow: -5px 20px 30px black}
+    62.4% {text-shadow: -10px 10px 15px black}
+    62.5% {text-shadow: 0px 0px 0px black}
+    75% {text-shadow: 0px 0px 0px black}
+    87% {text-shadow: 0px 0px 0px black}
+    87.1% {text-shadow: 10px 10px 15px black}
+    87.2% {text-shadow: 5px 20px 30px black}
+    87.3% {text-shadow: -5px 20px 30px black}
+    87.4% {text-shadow: -10px 10px 15px black}
+    87.5% {text-shadow: 0px 0px 0px black}
+    100%{text-shadow: 0px 0px 0px black}
+}
+@keyframes title-picture-panel-anime {
+    0%  {  background-image: url("../PIC/title1.jpg");  filter: brightness(1)blur(2px);}
+    12% {  background-image: url("../PIC/title1.jpg");  filter: brightness(1)blur(2px);}
+    12.2% {  background-image: url("../PIC/title1.jpg");  filter: brightness(10)blur(2px);}
+    12.3% {  background-image: url("../PIC/title2.jpg");  filter: brightness(10)blur(2px);}
+    12.5% {  background-image: url("../PIC/title2.jpg");  filter: brightness(1)blur(2px);}
+    25% {  background-image: url("../PIC/title2.jpg");  filter: brightness(1)blur(2px);}
+    37% {  background-image: url("../PIC/title2.jpg");  filter: brightness(1)blur(2px);}
+    37.2% {  background-image: url("../PIC/title2.jpg");  filter: brightness(10)blur(2px);}
+    37.3% {  background-image: url("../PIC/title3.jpg");  filter: brightness(10)blur(2px);}
+    37.5% {  background-image: url("../PIC/title3.jpg");  filter: brightness(1)blur(2px);}
+    50% {  background-image: url("../PIC/title3.jpg");  filter: brightness(1)blur(2px);}
+    62% {  background-image: url("../PIC/title3.jpg");  filter: brightness(1)blur(2px);}
+    62.2% {  background-image: url("../PIC/title3.jpg");  filter: brightness(10)blur(2px);}
+    62.3% {  background-image: url("../PIC/title4.jpg");  filter: brightness(10)blur(2px);}
+    62.5% {  background-image: url("../PIC/title4.jpg");  filter: brightness(1)blur(2px);}
+    75% {  background-image: url("../PIC/title4.jpg");  filter: brightness(1)blur(2px);}
+    87% {  background-image: url("../PIC/title4.jpg");  filter: brightness(1)blur(2px);}
+    87.2% {  background-image: url("../PIC/title4.jpg");  filter: brightness(10)blur(2px);}
+    87.3% {  background-image: url("../PIC/title1.jpg");  filter: brightness(10)blur(2px);}
+    87.5% {  background-image: url("../PIC/title1.jpg");  filter: brightness(1)blur(2px);}
+    100%{  background-image: url("../PIC/title1.jpg");  filter: brightness(1)blur(2px);}
+}

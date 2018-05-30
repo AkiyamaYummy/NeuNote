@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="CSS/notedisplay.css">
+    <script type="application/javascript" src="JS/jquery.js"></script>
+    <script type="text/javascript" src="JS/cookietool.js"></script>
+    <script>
+        function pageVerify(){
+            var c_code = get_cookie("c_code");
+            if(c_code === null){
+                location.href = "login.jsp";
+            }
+            $.ajax({
+                type: 'POST',
+                dataType: 'text',
+                url: "CheckCookies",
+                data:{"c_code":c_code},
+                async:false,
+                success:function(data){
+                    if((data+"").trim() !== "Verify successed."){
+                        location.href = "login.jsp";
+                    }
+                }.bind(this)
+            });
+        }
+        //pageVerify();
+    </script>
+</head>
+<body onload="bodyOnload()">
+<div id="page-panel">
+    <div id="page1"></div>
+    <div id="page2"></div>
+</div>
+<div id="main-top-panel">
+    <div id="top-panel-note-message">
+        <button id="top-panel-note-prev-button">上一页</button>
+        <span>第</span><input type="text" id="showing-note-left-page"/><span>页</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span>&lt;</span><span id="showing-note-title"></span><span>&gt;</span>
+        <span>共</span><span id="showing-note-tot-page"></span><span>页</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span>第</span><input type="text" id="showing-note-right-page"/><span>页</span>
+        <button id="top-panel-note-next-button">下一页</button>
+    </div>
+    <span class="main-title" onclick="location.href='index.html'">
+        $$NEU \infty NOTE$$
+    </span>
+</div>
+<div id="author-message-panel">
+    <div>
+        <a><button id="author-message-head"></button></a>
+        <span id="author-message-nickname-title">作者：</span>
+        <a><span id="author-message-nickname"></span></a>
+        <span id="author-message-share-time-title">分享于</span>
+        <span id="author-message-share-time"></span>
+        <span id="author-message-last-edit-title">最后编辑于</span>
+        <span id="author-message-last-edit-time"></span>
+    </div>
+</div>
+<script type="application/javascript" src="JS/NeuNoteCoreModule.js"></script>
+<script type="application/javascript" src="JS/noteeditpage.js"></script>
+<script>
+    function bodyOnload(){
+        mainEdit.editing = true;
+        pageEdit.initEditPage($("#page1"),{});
+        pageEdit.initEditPage($("#page2"),{});
+        var id = getQueryString("id");
+        if(id === null)return;
+        getBackendNote(id,"readonly");
+        var message = mainEdit.notemessage[id];
+        showingChange(id,1,2,"readonly");
+        bindNoteDisplayItems("readonly");
+        loadNoteAndAuthor(message)
+    }
+    function loadNoteAndAuthor(message) {
+        $("#showing-note-title").html(message.title);
+        $("#showing-note-tot-page").html(message.pages);
+        $("title").html(message.title + "-NEUNOTE");
+        $("#author-message-nickname").html(message.nickname);
+        $("#author-message-share-time").html(message.releaseTime);
+        $("#author-message-last-edit-time").html(message.lastEditTime);
+        $("#author-message-head").css({"background-image": "url('" + message.headphoto + "')"});
+        $("#author-message-head").parent().attr({
+            "href":"user.html?id="+message.stu_id
+        });
+        $("#author-message-nickname").parent().attr({
+            "href":"user.html?id="+message.stu_id
+        });
+    }
+</script>
+</body>
+</html>

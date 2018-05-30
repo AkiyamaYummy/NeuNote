@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>个人空间-NEUNOTE</title>
+    <script type="application/javascript" src="JS/jquery.js"></script>
+    <link rel="stylesheet" href="CSS/spacepage.css">
+    <link rel="stylesheet" href="CSS/font.css">
+    <script type="text/javascript" src="JS/cookietool.js"></script>
+    <script>
+        function pageVerify(){
+            var c_code = get_cookie("c_code");
+            if(c_code === null){
+                location.href = "login.jsp";
+            }
+            jQuery.ajax({
+                type: 'POST',
+                dataType: 'text',
+                url: "CheckCookies",
+                data:{"c_code":c_code},
+                async:false,
+                success:function(data){
+                    if((data+"").trim() !== "Verify successed."){
+                        location.href = "login.jsp";
+                    }
+                }.bind(this)
+            });
+        }
+        pageVerify()
+    </script>
+</head>
+<body onload="bodyOnload()">
+<div id="main-top-panel">
+    <div class="main-top-title" onclick="location.href='index.html'">$NEU \infty NOTE$</div>
+</div>
+<div id="title-picture-panel"></div>
+<div id="main-title">$$NEU \infty NOTE$$</div>
+<div id="main-content-panel">
+    <div id="owner-message-panel">
+        <div id="owner-message-head-panel">
+            <div></div>
+        </div>
+        <div id="owner-message-nickname-panel"></div>
+        <div id="owner-message-introduce-panel">
+            <span><b>个人简介</b></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="note-display-panel">
+        <div class="note-display-panel-title"><span>笔记一览</span></div>
+        <div class="note-display-panel-content" id="note-main-display-content">
+            <div class="note-display-item-switch-panel">
+                <button><span id="sub-nickname-panel"></span>&nbsp;分享的笔记</button>
+            </div>
+            <div class="note-display-page-switch-panel">
+                <button id="main-prev-page-button">上一页</button>
+                <button class="main-page-switch">1</button>
+                <button class="main-page-switch">2</button>
+                <button class="main-page-switch">3</button>
+                <button class="main-page-switch">4</button>
+                <button class="main-page-switch">5</button>
+                <button id="main-next-page-button">下一页</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" src="JS/spacepage.js"></script>
+<script type="application/javascript" src="JS/clienttool.js"></script>
+<script type="application/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script>
+    function bodyOnload(){
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] ],
+                displayMath: [ ["$$","$$"] ],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a','protect'],
+                ignoreClass:"text-flag"
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"],
+                showMathMenu: false
+            }
+        });
+        var id = getQueryString("id");
+        if(id) {
+            $("#main-prev-page-button").click(function () {
+                loadNotesFromBackend($("#note-main-display-content"),id,pageshowing-1);
+            });
+            $("#main-next-page-button").click(function () {
+                loadNotesFromBackend($("#note-main-display-content"),id,pageshowing+1);
+            });
+            $(".main-page-switch").click(function () {
+                var page = parseInt($(this).html());
+                loadNotesFromBackend($("#note-main-display-content"),id,page);
+            });
+            loadOwnerMessage(id);
+            loadNotesFromBackend($("#note-main-display-content"),id,1);
+        }
+    }
+</script>
+</body>
+</html>
